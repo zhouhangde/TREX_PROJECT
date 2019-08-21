@@ -100,7 +100,7 @@ export default {
   // },
   created() {
     //console.log(this.$utils);
-    // this.getCodeImg();
+    this.getCodeImg();
     this.account_number = this.$route.query.account_number || "";
     if(!localStorage.getItem('token')){
         this.account_number = localStorage.getItem('accountNum');

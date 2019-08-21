@@ -226,14 +226,9 @@
 				// 	contentType: false,
 				// 	processData: false,
 				// 	cache: false,
-				// 	async: false, 
+				// 	async: true, //异步
 				// 	beforeSend:function(request){
-				// 	  request.setRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36");
-				// 	  request.setRequestHeader("Cookie", "_ga=GA1.2.836631000.1565771885; _gid=GA1.2.1858403843.1565771885; _gat_gtag_UA_122948497_1=1; Hm_lvt_1b3d00072faa6b9490791cdd184333c3=1565771885; JSESSIONID=A150A6F03DD3BED2A7A7DD8BA39B5ED7; Hm_lpvt_1b3d00072faa6b9490791cdd184333c3=1565771889");
 				// 	  request.setRequestHeader("Accept", "*/*");
-				// 	  request.setRequestHeader("Host", "www.chainfor.co");
-				// 	  request.setRequestHeader("Referer", "https://www.chainfor.com/lives/index.html");
-				// 	  request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 				// 	},
 				// 	url : "https://gateio.news/json_svr/get_loan_market_status",
 				// 	dataType: "JSON",
@@ -244,6 +239,9 @@
 				// 	error : function(e){
 				// 	}
 				// });
+
+				
+
 
 			},
 			//截取指定字符前的内容

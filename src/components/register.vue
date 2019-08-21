@@ -141,9 +141,9 @@ export default {
           
           if(window.location.href.indexOf("?") != -1){
             var can = this.getCaption(window.location.href,1)
-            window.location.href="https://www.hxex.com/register.html" + '?'+can;
+            window.location.href="http://47.52.167.77:8080/register.html" + '?'+can;
           }else{
-            window.location.href="https://www.hxex.com/register.html" ;
+            window.location.href="http://47.52.167.77:8080/register.html" ;
           }
           
       } else {
