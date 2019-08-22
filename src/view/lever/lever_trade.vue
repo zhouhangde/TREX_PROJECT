@@ -45,12 +45,21 @@
 						<label>手数</label>
 						<!-- 最少买入数量 -->
 						<div class="flex share-total">
-								<input
+								<!-- <input
 									type="number"
 									class="share-input"
 									v-model="shareNumber_buy"
 
 									:placeholder='$t("lever.handbuy")+ minNum+ currency_name'
+									@input="changeValue('buy')"
+								> -->
+
+								<input
+									type="number"
+									class="share-input"
+									v-model="shareNumber_buy"
+
+									:placeholder='$t("lever.handbuy")+ minNum+ "手"'
 									@input="changeValue('buy')"
 								>
 
@@ -112,7 +121,8 @@
 						</select>
 					</div>
 					<div class="mt10 input-item clear">
-						<label>{{$t("lever.hands")}}：</label>
+						<!-- <label>{{$t("lever.hands")}}：</label> -->
+						<label>手数</label>
 						<!-- 最多买出数量 -->
 						<!-- :placeholder='$t("lever.handsell")+ share_number+ currency_name' -->
 						<div class="flex share-total">
@@ -120,7 +130,7 @@
 								type="number"
 								class="share-input"
 								v-model="shareNumber_sell"
-								:placeholder='$t("lever.handsell")+ minNum+ currency_name'
+								:placeholder='$t("lever.handsell")+ minNum+ "手"'
 								@input="changeValue('sell')"
 							>
 						</div>
