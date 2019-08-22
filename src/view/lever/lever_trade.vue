@@ -45,16 +45,16 @@
 						<label>手数</label>
 						<!-- 最少买入数量 -->
 						<div class="flex share-total">
-								<!-- <input
+								<input
 									type="number"
 									class="share-input"
 									v-model="shareNumber_buy"
 
 									:placeholder='$t("lever.handbuy")+ minNum+ currency_name'
 									@input="changeValue('buy')"
-								> -->
+								>
 
-								<select  v-model="shareNumber_buy" @change="changeValue('buy')" style="width: 100%;">
+								<!-- <select  v-model="shareNumber_buy" @change="changeValue('buy')" style="width: 100%;">
 									<option disabled value>请选择手数</option>
 									<option
 										v-for="(item,index) in minNumArray"
@@ -62,7 +62,7 @@
 										:value="item"
 									>{{item}}手{{currency_name}}
 									</option>
-								</select>
+								</select> -->
 
 
 							</div>
