@@ -337,7 +337,7 @@
 				var that = this;
 				var localData = JSON.parse(window.localStorage.getItem("leverTradeData"));
 				// 打开一个 web socket
-				var ws = new WebSocket("wss://ws.hxex.com/ws");
+				var ws = new WebSocket("wss://ws.taurusex.co/ws");
 
 				ws.onopen = function () {
 					//console.log('market链接成功')

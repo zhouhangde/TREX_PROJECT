@@ -1,4 +1,4 @@
-<template>
+﻿<template>
 
   <div id="index-footer" class="foot flex center around" style="padding:50px 80px;">
   
@@ -72,19 +72,21 @@
             tag="span"
           >{{$t('footer.workorder')}}</router-link>
         </li>
-        <li class="mb15" >
-          <!--<router-link
+
+        <!--<router-link
             :to="{path:'/currencyApply'}"
             tag="span">
             {{$t('footer.apply')}}
             </router-link>-->
-			<a target="_blank" href="http://va.mikecrm.com/yPOgcOl">{{$t('footer.apply')}} </a>
-        </li>
+        <!-- <li class="mb15" >
+		     	<a target="_blank" href="http://va.mikecrm.com/yPOgcOl">{{$t('footer.apply')}} </a>
+        </li> -->
+
         <li class="mb15" >
-            {{$t('footer.email')}}:business@hxex.com
+            {{$t('footer.email')}}:business@taurusex.co
         </li>
 		  <li class="mb15" >
-			  {{$t('footer.support')}}:support@hxex.com
+			  {{$t('footer.support')}}:support@taurusex.co
 		  </li>
       </div>
     </ul>

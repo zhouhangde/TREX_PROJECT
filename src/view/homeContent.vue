@@ -542,7 +542,7 @@
 				// 打开一个 web socket
 				// var ws = new WebSocket("ws://127.0.0.1:8012/ws");
 
-				var ws = new WebSocket("wss://ws.hxex.com/ws");
+				var ws = new WebSocket("wss://ws.taurusex.co/ws");
 
 				ws.onopen = function () {
 					// Web Socket 已连接上，使用 send() 方法发送数据

@@ -29,7 +29,7 @@
 				<!-- <router-link v-if="token" to="/advice">{{$t('header.complaint')}}</router-link>
                 <div v-else @click="goLogin()">{{$t('header.complaint')}}</div> -->
 				<router-link to="/passCard">{{$t('header.pro')}}</router-link>
-				<router-link to="/crowFinding">TREX PEAK</router-link>
+				<router-link to="/crowFinding">TREX LABS</router-link>
 				<!-- <div @click="noopen">存币宝</div>
                 <div @click="noopen">投票上币</div> -->
 				<router-link to="/depositCoin">{{$t('header.cun')}}</router-link>

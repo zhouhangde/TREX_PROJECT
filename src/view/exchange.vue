@@ -219,7 +219,7 @@ export default {
       // that.$socket.on("transaction", msg => {
         //websocket
        // 打开一个 web socket
-        var ws = new WebSocket("wss://ws.hxex.com/ws");
+        var ws = new WebSocket("wss://ws.taurusex.co/ws");
         
         ws.onopen = function()
         {

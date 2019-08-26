@@ -245,7 +245,7 @@ export default {
 		   var tradeData = window.localStorage.getItem('tradeData');
             tradeData = JSON.parse(tradeData);
        // 打开一个 web socket
-        var ws = new WebSocket("wss://ws.hxex.com/ws");
+        var ws = new WebSocket("wss://ws.taurusex.co/ws");
         
         ws.onopen = function()
         {

@@ -239,7 +239,6 @@
 							this.list_content = this.list_content.concat(
 								res.data.message.list.data
 							);
-							// console.log('this.list_content',this.list_content)
 							// this.riskRate = res.data.message.hazard_rate;
 							// this.totalPro = res.data.message.profits_total;
 							this.profitsPrice = res.data.message.profits;
