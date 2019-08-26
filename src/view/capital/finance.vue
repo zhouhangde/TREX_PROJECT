@@ -747,10 +747,10 @@
 				var min_number = this.minnumber;
 				var thisid = this.thisid;
 				//console.log(rate);
-				// if(!address){
-				//     layer.alert(that.$t('lay.caddress'));
-				//     return;
-				// }
+				if(!address){
+				    layer.alert(that.$t('lay.caddress'));
+				    return;
+				}
 				if (!number) {
 					layer.alert(that.$t("lay.cnumber"));
 					return;
