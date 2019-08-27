@@ -5,7 +5,7 @@
 		<index-footer></index-footer>
 		<div style="display: flex;" class="theParent" v-show="showModel">
 			<div style="display: flex;">
-                <img src="./assets/images/hxex.png" style="width:124px;height:124px"/>
+                <img src="./assets/images/hxex_logo.png" style="width:124px;height:124px"/>
 				<div style="padding: 0 15px;color: #fff;margin-left: 26px;">
 					<p style="font-size: 18px;font-size: 51px;">TREX</p>
 					<p style="font-size: 14px;font-size: 39px;">比特币|数字货币交易平台</p>
@@ -122,7 +122,7 @@
 			},
 			//下载
 			upload(){
-               window.location.href = 'https://51gsc.com/app/JJS0'
+               window.location.href = 'https://www.pgyer.com/f3F9'
 			},
 			checkPt(){
 				let sUserAgent = navigator.userAgent.toLowerCase();
