@@ -6,7 +6,7 @@
                     <p class="ft22 cor3">{{$t('invite.link')}}</p>
                     <div class="mt20 flex alcenter cor2">
                         <div class=" radius4 flex alcenter flex1 mr30 radius5 hidden">
-                            <div class=" flex1 ptb10 tc bgWhite">https://www.hxex.com/#/components/register?code={{invite_code}}</div>
+                            <div class=" flex1 ptb10 tc bgWhite">https://www.taurusex.co/#/components/register?code={{invite_code}}</div>
                             <div class="tc  ft16 w25 ptb10 curPer copy_link white" style="background:#79c6fa;" @click="copy_link">{{$t('invite.share')}}</div>
                         </div>
                         <div class="w30 radius4 flex alcenter radius5 hidden">
@@ -49,7 +49,7 @@
                     </div>
                     <div class="plr10 ptb10 bgWhite w30">
                         <p class="mb10">二级邀请总人数：{{msg.second||'--'}}</p>
-                        <p>二级总HXB持仓：{{msg.second_balance||'--'}}</p>
+                        <!-- <p>二级总HXB持仓：{{msg.second_balance||'--'}}</p> -->
                     </div>
                     <div class="plr10 ptb10 bgWhite w30">
                         <p class="mb10">三级邀请总人数：{{msg.third || '--'}}</p>
@@ -330,7 +330,7 @@ export default {
             var clipboard = new Clipboard(".copy_link", {
                 text: function() {
                 return (
-                    'https://www.hxex.com/#/components/register?code='+that.invite_code
+                    'https://www.taurusex.co/#/components/register?code='+that.invite_code
                 );
                 }
             });

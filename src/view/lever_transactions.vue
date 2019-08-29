@@ -25,7 +25,7 @@
 				<span class="width1">{{$t('lever.openPrice')}}</span>
 				<span class="width1">{{$t('lever.nowPrice')}}</span>
 				<span class="width1">{{$t('lever.bail')}}</span>
-				<span class="width1">{{$t('lever.yugu')}}</span>
+				<!-- <span class="width1">{{$t('lever.yugu')}}</span> -->
 				<span class="width1">{{$t('lever.styPrice')}}</span>
 				<span class="width1">{{$t('lever.stsPrice')}}</span>
 				<span class="width2">{{$t('lever.openTime')}}</span>
@@ -41,7 +41,7 @@
 				<span class="width1">{{item.price || '0.00' | tofixedFour}}</span>
 				<span class="width1">{{item.now_price || '0.00' | tofixedFour}}</span>
 				<span class="width1">{{item.caution_money || '0.00' | tofixedFour}}</span>
-				<span class="width1">{{item.yugu || '0.00' | tofixedFour}}</span>
+				<!-- <span class="width1">{{item.yugu || '0.00' | tofixedFour}}</span> -->
 				<span class="width1">{{item.stop_win_money || '0.00' | tofixedFour}}</span>
 				<span class="width1">{{item.stop_lose_money || '0.00' | tofixedFour}}</span>
 				<span class="width2">{{item.deal_time}}</span>
