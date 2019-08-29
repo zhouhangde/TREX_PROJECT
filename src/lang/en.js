@@ -731,7 +731,7 @@ export default {
 		pay: 'Method of payment ',
 		id: 'Authentication ',
 		safe: 'Security setting',
-		invitate: 'Invite friends',
+		invitate: 'Invite',
 		finance: 'Financial records',
 		loginlog: 'Login log',
 	},

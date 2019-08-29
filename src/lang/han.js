@@ -732,7 +732,7 @@ export default {
 		pay: '거래 관리',
 		id: '아이디 인증',
 		safe: '보안 설정',
-		invitate: '손 님을 초대 하 다',
+		invitate: '초청',
 		finance: '재무 기록',
 		loginlog: '로그 온로 그',
 	},

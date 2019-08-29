@@ -648,7 +648,7 @@ export default {
 		pay: '支払い方式',
 		id: 'ID認証',
 		safe: 'セキュリティ設定',
-		invitate: '招待還利',
+		invitate: '招待',
 		finance: '財務記録',
 		loginlog: 'ログインログ',
 	},

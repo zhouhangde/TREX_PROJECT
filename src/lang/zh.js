@@ -701,7 +701,7 @@ export default {
 		pay: '支付方式',
 		id: '身份认证',
 		safe: '安全设置',
-		invitate: '邀请返利',
+		invitate: '邀请',
 		finance: '财务记录',
 		loginlog: '登录日志',
 	},

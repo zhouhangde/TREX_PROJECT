@@ -15,7 +15,7 @@
                         </div>
                     </div>
                 </div>
-            <div class="invite_header radius8 bg-part shadows hidden">
+            <!-- <div class="invite_header radius8 bg-part shadows hidden">
                 <div class=" head ft16 flex alcenter center" style="background:#e0f2ff;">
                     <img src="../assets/images/icon_bd.png" alt="" class="mr10">
                     <span>{{$t('invite.list')}}</span>
@@ -39,8 +39,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <p class="ptb10 mt10 mb10 bgWhite radius4 tc ft14">手续费返佣总额 {{count_inv}}  <span class="ml20">SGR返佣总额 {{count_release}}</span></p>
+            </div> -->
+            <!-- <p class="ptb10 mt10 mb10 bgWhite radius4 tc ft14">手续费返佣总额 {{count_inv}}  <span class="ml20">SGR返佣总额 {{count_release}}</span></p> -->
             <!--邀请人数、持仓数量--->
                 <div class="flex mb10 between mt20 ft14">
                     <div class="plr10 ptb10 bgWhite w30">
@@ -56,7 +56,8 @@
                         <p>三级总HXB持仓：{{msg.third_balance || '--'}}</p>
                     </div>
                 </div>
-            <div class="bg-part plr20 pt20 pb50 mt20 radius8">
+                
+            <div class="bg-part plr20 pt20 pb50 mt20 radius8" style="display:none;">
                 <!-- <div class="">
                     <p class="ft22 cor3">{{$t('invite.link')}}</p>
                     <div class="mt20 flex alcenter cor2">
