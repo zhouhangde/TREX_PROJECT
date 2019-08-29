@@ -57,7 +57,7 @@
                 </div>
                 <div class="invite-box">
                     <div class="tip">{{$t('register.invitecode')}}</div>
-                    <input type="text" :placeholder="$t('register.xuan')" v-model="invite" class="invite-input" style="width:400px;">
+                    <input type="text" placeholder="必填" v-model="invite" class="invite-input" style="width:400px;">
                 </div>
                 <p class="flex alcenter ft12">
                   <input id="agree" class="aggre" v-model="isCheck" @click="check" type="checkbox" /><label for="agree">{{$t('register.agree')}} <router-link to="/aggrement" class="link_text">{{$t('register.mian')}}</router-link></label>
@@ -353,6 +353,12 @@ export default {
            return;
         }
       }
+      
+       if(this.invite == ''){
+           layer.msg('邀请码不能为空');
+           return;
+        }
+
       var regPsws = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,16}$/;
       if (this.pwd == "") {
         layer.msg(that.$t('lay.inpwd'));
