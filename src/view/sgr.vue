@@ -85,7 +85,7 @@
       <div class="flex ptb10 plr10 between links">
          <div>
              <p class="mb20" style="color: #000">{{$t('sgr.invite')}}</p>
-             <p class="greenCor" style="color: #409eff">{{$t('sgr.link')}}：https://www.hxex.one/#/components/register?code={{invite_code}}</p>
+             <p class="greenCor" style="color: #409eff">{{$t('sgr.link')}}：https://www.taurusex.co/#/components/register?code={{invite_code}}</p>
          </div>
          <div class="flex column end">
              <span class="ft14 plr10 ptb5 copy copy_link intro1 curPer bg_green" @click="copy_link">{{$t('sgr.copy')}}</span>
@@ -154,7 +154,7 @@ export default {
             var clipboard = new Clipboard(".copy_link", {
                 text: function() {
                 return (
-                    'https://www.hxex.one/#/components/register?code='+that.invite_code
+                    'https://www.taurusex.co/#/components/register?code='+that.invite_code
                 );
                 }
             });
