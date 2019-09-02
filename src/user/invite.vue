@@ -45,7 +45,7 @@
                 <div class="flex mb10 between mt20 ft14">
                     <div class="plr10 ptb10 bgWhite w30">
                         <p class="mb10">一级邀请总人数：{{msg.first||'--'}}</p>
-                        <p>一级总HXB持仓：{{msg.first_balance||'--'}}</p>
+                        <!-- <p>一级总HXB持仓：{{msg.first_balance||'--'}}</p> -->
                     </div>
                     <div class="plr10 ptb10 bgWhite w30">
                         <p class="mb10">二级邀请总人数：{{msg.second||'--'}}</p>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="plr10 ptb10 bgWhite w30">
                         <p class="mb10">三级邀请总人数：{{msg.third || '--'}}</p>
-                        <p>三级总HXB持仓：{{msg.third_balance || '--'}}</p>
+                        <!-- <p>三级总HXB持仓：{{msg.third_balance || '--'}}</p> -->
                     </div>
                 </div>
                 
