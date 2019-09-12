@@ -41,6 +41,7 @@
 			if(theme == 'dark'||theme == ''){
 				this.$changeTheme('dark');
 			};
+			
 			this.$http({
 				url: "/api/" + "currency/change_match",
 				method: "get",
@@ -81,6 +82,9 @@
 				})
 				.catch(error => {
 				});
+
+
+				
 			this.getLeverMarket();
 		},
 		methods:{

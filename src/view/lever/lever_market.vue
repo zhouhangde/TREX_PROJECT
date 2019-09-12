@@ -195,6 +195,7 @@
 					data: {}
 				}).then(res => {
 					layer.close(load);
+					
 					if (res.data.type == "ok") {
 						this.tabList = res.data.message;
 						var msg = res.data.message;
@@ -232,8 +233,7 @@
 						var leverTradeDataMy = window.localStorage.getItem("leverTradeData_my");
 						if(leverTradeDataMy!=''&& leverTradeDataMy!=undefined && leverTradeDataMy!=null){
 							    var localData = JSON.parse(window.localStorage.getItem("leverTradeData_my"));
-									this.$store.state.symbol =
-										localData.currency_name + "/" + localData.legal_name;
+									this.$store.state.symbol = localData.currency_name + "/" + localData.legal_name;
 									this.nowLegal = localData.legal_name;
 									this.legal_name = localData.legal_name;
 									this.currency_name = localData.currency_name;
@@ -299,6 +299,10 @@
 						setTimeout(() => {
 							eventBus.$emit("toExchange0", leverTradeDatas);
 						}, 1000);
+
+						var endTime = +new Date();
+                        console.log("排序用时共计"+(endTime-beginTime)+"ms");
+
 						// socket连接
 						this.connect();
 					}
