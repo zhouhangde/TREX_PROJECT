@@ -1,8 +1,9 @@
 <template>
 	<div class="wrap bg-part">
 		<div class="tab-header">
+			<span :class="[{'active':status == 1}]" @click="tabClick(1)">{{$t('lever.tdin')}}</span>
 			<span :class="[{'active':status == 0}]" @click="tabClick(0)">{{$t('lever.listin')}}</span>
-<!--			<span :class="[{'active':status == 1}]" @click="tabClick(1)">{{$t('lever.tdin')}}</span>-->
+			
 <!--			<span :class="[{'active':status == 2}]" @click="tabClick(2)">{{$t('lever.closein')}}</span>-->
 			<span :class="[{'active':status == 3}]" @click="tabClick(3)">{{$t('lever.closed')}}</span>
 			<span :class="[{'active':status == 4}]" @click="tabClick(4)">{{$t('lever.revoked')}}</span>
@@ -68,7 +69,7 @@
 				list_content: [],
 				page: 0,
 				more: this.$t('td.more'),
-				status: 0,
+				status: 1,
 				flag: true
 			};
 		},
