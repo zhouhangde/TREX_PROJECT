@@ -1,11 +1,12 @@
 <template>
 	<div class="trade clr-part" style>
 		<div class=" bdb ft14 bdb_blue" style="line-height: 32px">
+			<!-- 限价交易，市价交易，资金变化和深度图 -->
 			<div class="tabtitle ft14 curPer">
 				<!-- <span :class="{active:show == true}">限价交易</span>
                 <span :class="{active:show == false}" @click="changeType">市价交易</span>-->
 				<span
-					v-for="(item,index) in tradetype"
+					v-for="(item,index) in tradetype" :key="index"
 					:class="{active:index==current}"
 					@click="changeType(index)"
 				>{{item.typetext}}</span>

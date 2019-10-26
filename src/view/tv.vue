@@ -1,11 +1,14 @@
 <template>
   <div class="k-line-area bg-1d1d29">
     <div class="flex ft12 top_bg">
+      <!-- 如：SGA/USDT交易对 -->
       <span class="ft16 bold flex alcenter c_symbol" style="color: #D2D6EC !important;">{{$store.state.symbol}}</span>
+      <!-- 0.27732约合人命币 -->
       <span class="flex column alcenter center">
         <span class="bold ft16" :style="{color:parseFloat(change)>0?'#41B37D':'#D74E5A'}">{{close}}</span>
         <span class="gray_color bold">≈{{now_cny_price}} CNY</span>
       </span>
+      <!-- 涨幅 -->
       <span class="flex column alcenter">
         <span class="gray_color">{{$t('market.change')}}</span>
         <span
@@ -13,18 +16,22 @@
           :style="{color:parseFloat(change)>0?'#41B37D':'#D74E5A'}"
         >{{(change-0).toFixed(2)}}%</span>
       </span>
+      <!-- 最高价 -->
       <span class="flex column alcenter">
         <span class="gray_color">{{$t('home.high')}}</span>
         <span class="bold_gray bold">{{(high-0).toFixed(6)}}</span>
       </span>
+      <!-- 最低价 -->
       <span class="flex column alcenter">
         <span class="gray_color">{{$t('home.min')}}</span>
         <span class="bold_gray bold">{{(low-0).toFixed(6)}}</span>
       </span>
+      <!-- 24h交易量 -->
       <span class="flex column alcenter">
         <span class="gray_color">24h{{$t('home.volume')}}</span>
         <span class="bold_gray bold">{{(volume-0).toFixed(2)}} {{currencyName}}</span>
       </span>
+      <!-- 切换白天和黑夜 -->
       <div class="theme flex">
           <img src="../assets/images/dark.png"  @click="$changeTheme('dark')" alt="">
           <img src="../assets/images/light.png" @click="$changeTheme('light')" alt="">      
@@ -67,6 +74,7 @@ export default {
     };
   },
   created() {
+    // 获取缓存的相关参数
     if (window.localStorage.getItem("tradeData")) {
       var localData = JSON.parse(window.localStorage.getItem("tradeData"));
       this.currencyId = localData.currency_id;
@@ -80,8 +88,9 @@ export default {
         localData.currency_name + "/" + localData.legal_name;
     }
     setTimeout(() => {
-      this.getChange();
+      this.getChange();   //连接websocket，获取k线数据
     }, 800);
+    // 获取今天的数据
     this.getToday(this.currencyId, this.legalId);
   },
   sockets: {},
@@ -93,11 +102,13 @@ export default {
   },
   watch: {
     listenState: function(a, b) {
+      // EOS/USDT BTC/2
       //监听交易对
       if (a != b && b != "BTC/2") {
+        // setSymbol使图表更改其商品和周期。 新商品的数据到达后调用回调。
         this.widget.setSymbol(
           a,
-          localStorage.getItem("tim"),
+          localStorage.getItem("tim"),  //5
           function onReadyCallback() {}
         ); //切换币种
         // this.$store.state.symbol=b
@@ -184,7 +195,6 @@ export default {
   methods: {
     //请求日数据
     getToday(c_id, l_id) {
-      //console.log('sssss',c_id,l_id)
       this.$http({
         url: "/api/quotation/today",
         method: "post",
@@ -193,7 +203,6 @@ export default {
           legal_id: l_id
         }
       }).then(res => {
-        //console.log(res)
         if (res.data.type == "ok") {
           var msg = res.data.message;
           this.change = msg.change;
@@ -208,22 +217,23 @@ export default {
     getChange() {
       var that = this;
       var ws = new WebSocket("wss://ws.taurusex.co/ws");
-
+      
+      // 连接建立时触发
       ws.onopen = function() {
         // Web Socket 已连接上，使用 send() 方法发送数据
         var sendData = { socket_type: "daymarket", subscribed: 1 };
         sendData = JSON.stringify(sendData);
+        // 使用连接发送数据
         ws.send(sendData);
       };
+      // 客户端接收服务端数据时触发
       ws.onmessage = function(evt) {
         var msg = JSON.parse(evt.data);
         if (msg.type == "daymarket") {
-          //  //console.log(that.$store.state.symbol,msg.currency_name,msg.legal_name,msg)
           if (
             that.$store.state.symbol ==
             msg.currency_name + "/" + msg.legal_name
           ) {
-          //  //console.log(msg);
             that.change = msg.change;
             that.close = msg.now_price;
             that.volume = msg.volume;
@@ -238,6 +248,7 @@ export default {
           }
         }
       };
+      // 连接关闭时触发重新连接
       ws.onclose = function() {
         // 关闭 websocket
         that.getChange();
@@ -258,19 +269,13 @@ export default {
         };
         sendData = JSON.stringify(sendData);
         ws.send(sendData);
-        //console.log(sendData,'连接成功')
       };
 
       ws.onmessage = function(evt) {
-        // //console.log(evt)
         var msg = JSON.parse(evt.data);
-        // //console.log(msg)
         let obj = {};
         if (msg.type == "kline") {
-          // //console.log(msg)
           if (that.$store.state.symbol == msg.sybmol) {
-            // //console.log(that.$store.state.symbol)
-            // //console.log(msg)
             var tim = localStorage.getItem("tim");
             // obj.open = Number(msg.open);
             // obj.low = Number(msg.low);
@@ -302,10 +307,9 @@ export default {
           }
         }
       };
-
+      // 连接关闭时触发重新连接
       ws.onclose = function() {
         // 关闭 websocket
-        //console.log('guanbi')
         that.connect(real);
       };
 
@@ -316,24 +320,27 @@ export default {
       let _this = this;
 
       this.$nextTick(function() {
+        // 图表控件构造函数调用
         let widget = (_this.widget = new TradingView.widget({
-          symbol: _this.$store.state.symbol,
-          interval: 5,
-          debug: true,
-          fullscreen: false,
-          autosize: true,
-          container_id: "tv_chart_container",
+          symbol: _this.$store.state.symbol, //初始商品
+          interval: 5,  //周期
+          debug: true,  //使图表将详细的API日志写入控制台
+          fullscreen: false,  //图表是否占用窗口中所有可用的空间
+          autosize: true,  //图表是否应使用窗格中的所有可用空间，并在调整窗格本身大小时自动调整大小
+          container_id: "tv_chart_container",  //id属性为指定要包含widget的DOM元素id。
           // datafeed: new Datafeeds.UDFCompatibleDatafeed("http://demo_feed.tradingview.com"),
-          datafeed: _this.createFeed(),
-          library_path: "/static/tradeview/charting_library/",
-          custom_css_url: _this.csspath,
-          locale: "zh",
+          datafeed: _this.createFeed(), //实现接口 JS API 以反馈数据显示在图表上???
+          library_path: "/static/tradeview/charting_library/",   //static文件夹的路径
+          custom_css_url: _this.csspath,  //将您的自定义CSS添加到图表中。url应该是到static文件夹的绝对或相对路径bundles/new.css
+          locale: "zh",  //图表库的本地化处理
           // width: "100%",
           // height: 516,
-          drawings_access: {
-            type: "black",
+          drawings_access: {  //显示对应的ui控件
+            type: "black",  //type是列表类型,black(所有列出的项目会被禁用)
+            // name(强制的) 指标的名称。使用相同的名称，你可以看到他们在指标控件？？？
             tools: [{ name: "Regression Trend" }]
           },
+          // 默认情况下启用名称的数组？？？
           disabled_features: [
             //  禁用的功能
             "header_saveload",
@@ -357,6 +364,7 @@ export default {
             "volume_force_overlay",
             "widget_logo"
           ],
+          // 默认情况下禁用名称的数组？？？
           enabled_features: [
             //  启用的功能（备注：disable_resolution_rebuild 功能用于控制当时间范围为1个月时，日期刻度是否都是每个月1号
             "dont_show_boolean_study_arguments",
@@ -366,10 +374,11 @@ export default {
             "side_toolbar_in_fullscreen_mode",
             "disable_resolution_rebuild"
           ],
-          charts_storage_url: "http://saveload.tradingview.com",
-          charts_storage_api_version: "1.1",
-          toolbar_bg: "transparent",
-          timezone: "Asia/Shanghai",
+          charts_storage_url: "http://saveload.tradingview.com",  //演示图表和指标模板存储,官方的
+          charts_storage_api_version: "1.1",  //您的后台版本。支持的值:"1.0"|"1.1"。 指标模板从1.1开始得到支持
+          toolbar_bg: "transparent",  //工具栏背景颜色
+          timezone: "Asia/Shanghai",  //图表的初始时区。时间刻度上的数字取决于这个时区
+          // 使用此选项自定义默认指标的样式及输入值??
           studies_overrides: {
             "volume.precision": "1000"
             // "MA Cross.short:plot.color": "#ff0000",   //指标线颜色
@@ -385,26 +394,30 @@ export default {
             // "bollinger bands.median.color": "#33FF88",
             // "bollinger bands.upper.linewidth": 7
           },
+          // 对Widget对象的默认属性进行覆盖
           overrides: _this.overrides()
         }));
 
-        widget.MAStudies = [];
-        widget.selectedIntervalButton = null;
+        widget.MAStudies = [];  //????
+        widget.selectedIntervalButton = null;  //????
         // widget.setLanguage('en')
-        widget.onChartReady(function() {
+        // 当图表初始化并准备就绪时，图表库将调用提供的回调onChartReady
+        widget.onChartReady(function() {  //????
           //图表方法
           // document.getElementById('trade-view').childNodes[0].setAttribute('style', 'display:block;width:100%;height:100%;');
           //let that =this
 
+          // .chart返回图表对象  
+          // createStudy创建一个关于主商品的指标
           widget
             .chart()
             .createStudy(
-              "Moving Average",
-              false,
-              true,
-              [15, "close", 0],
-              null,
-              { "Plot.color": "#e843da" }
+              "Moving Average", //name: string, 指标名称
+              false,  //是否强制图表库将创建的指标放在主窗格中
+              true,  //是否锁定指标
+              [15, "close", 0],   //指标参数数组, 该数组应包含与指标属性对话框中相同顺序的输入值
+              null,  //覆盖你的新指标 
+              { "Plot.color": "#e843da" }  //????
             );
           widget.chart().createStudy("MA Cross", false, false, [10, 20]);
           let buttonArr = [
@@ -466,8 +479,9 @@ export default {
           let btn = {};
           let nowTime = "";
           buttonArr.forEach((v, i) => {
-            // //console.log(v)
+            // createButton在图表的顶部工具栏中创建一个新的DOM元素，并为此按钮返回HTMLElement。 您可以使用它在图表上添加自定义控件
             let button = widget.createButton();
+            //设置button的样式
             button
               .attr("title", v.text)
               .addClass("my2")
@@ -478,7 +492,6 @@ export default {
               localStorage.setItem("tim", "5"); //默认为1分钟
             }
 
-            // //console.log($(this),'999999')
             btn = button.on("click", function(e) {
               $(this)
                 .parents(".left")
@@ -487,15 +500,16 @@ export default {
                 .removeAttr("style"); //去掉1分钟的
                 $(this).css({ "background-color": "#9194a4", color: "#fff" })
                 handleClick(e, v.value);
-
+              // setChartType设置主数据列的样式。
               widget.chart().setChartType(v.chartType); //改变K线类型
             });
           });
           let handleClick = (e, value) => {
             _this.setSymbol = function(symbol, value) {
-              gh.chart().setSymbol(symbol, value);
+              gh.chart().setSymbol(symbol, value);  //更改图表商品。 新商品的数据到达后调用回调。
             };
             localStorage.setItem("tim", value);
+            // 更改图表周期。 新周期的数据到达后调用回调。
             widget.chart().setResolution(value, function onReadyCallback() {}); //改变分辨率
 
             $(e.target)
@@ -707,14 +721,6 @@ export default {
       Datafeed.Container.prototype._logMessage = function(message) {
         if (this._enableLogging) {
           var now = new Date();
-          // //console.log(
-          //   "CHART LOGS: " +
-          //     now.toLocaleTimeString() +
-          //     "." +
-          //     now.getMilliseconds() +
-          //     "> " +
-          //     message
-          // );
         }
       };
 
@@ -747,13 +753,6 @@ export default {
       ) {
         this._logMessage("GOWNO :: resolve symbol " + symbolName);
         Promise.resolve().then(() => {
-          // //console.log(
-          //   this_vue.$store.state.priceScale,
-          //   "12345s313123122adaslast"
-          // );
-
-          // this._logMessage("GOWNO :: onResultReady inject "+'AAPL');
-          // //console.log(this_vue.$store.state.priceScale, "123stf");
           onSymbolResolvedCallback({
             name: this_vue.$store.state.symbol,
             timezone: "Asia/Shanghai",
@@ -989,7 +988,6 @@ export default {
     },
 
     chose() {
-      // //console.log(this.widget,'000')
       this.widget.setLanguage("en"); //设置语言
 
       // this.$store.commit('symbol','sdt')

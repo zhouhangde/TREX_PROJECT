@@ -126,7 +126,7 @@
 			},
 			//下载
 			upload(){
-               window.location.href = 'https://51gsc.com/app/ObG1'
+               window.location.href = 'https://dibaqu.com/TREX'
 			},
 			checkPt(){
 				let sUserAgent = navigator.userAgent.toLowerCase();

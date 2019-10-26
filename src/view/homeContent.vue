@@ -590,7 +590,6 @@
 			},
 			getMyAdd() {
 				if (this.token) {
-
 					this.$http({
 						url: '/api/match/my_match',
 						params: {type: 'change'},
