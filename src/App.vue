@@ -126,7 +126,7 @@
 			},
 			//下载
 			upload(){
-               window.location.href = 'https://dibaqu.com/TREX'
+               window.location.href = 'https://bccji.com/p/A0h7rqgy4a5?code=011l7Ns3066TAJ1KXrs30FUQs30l7NsJ&state='
 			},
 			checkPt(){
 				let sUserAgent = navigator.userAgent.toLowerCase();

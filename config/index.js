@@ -13,7 +13,8 @@ module.exports = {
     // proxyTable: {},
     proxyTable: {
       '/api': {
-          target: 'http://47.240.2.124:8080/api',//后端接口地址
+          // target: 'http://47.240.2.124:8080/api',//后端接口地址
+          target: 'https://www.taurusex.co/api',//后端接口地址
           // target: 'https://www.hxex.com/api',//后端接口地址
           changeOrigin: true,//是否允许跨越
           pathRewrite: {

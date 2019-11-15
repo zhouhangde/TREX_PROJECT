@@ -35,7 +35,7 @@
     <ul class="ft12 foot_ul gray_a">
       <div>
         <li class="mb15 ft16 white">{{$t('header.help')}}</li>
-        <li class="mb15 curPer"><a href="https://dibaqu.com/TREX" target="_blank">{{$t('footer.download')}}</a></li>
+        <li class="mb15 curPer"><a href="https://bccji.com/p/A0h7rqgy4a5?code=011l7Ns3066TAJ1KXrs30FUQs30l7NsJ&state=" target="_blank">{{$t('footer.download')}}</a></li>
         <li class="mb15">
           <!-- <router-link :to="{path:'/components/noticeDetail',query:{id:47}}" class="mr15" tag="span">{{$t('footer.connect')}}</router-link> -->
           <router-link :to="{path:'/noticeHelp'}" tag="span">{{$t('footer.notice')}}</router-link>

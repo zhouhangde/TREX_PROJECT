@@ -99,7 +99,7 @@
 						</el-tooltip>
 					</div>
 					<div style="margin-left: 10px">
-						<a href="https://dibaqu.com/TREX"><i class="fa fa-download" aria-hidden="true"></i></a>
+						<a href="https://bccji.com/p/A0h7rqgy4a5?code=011l7Ns3066TAJ1KXrs30FUQs30l7NsJ&state="><i class="fa fa-download" aria-hidden="true"></i></a>
 					</div>
 				</div>
 				<!--				登录之后-->
@@ -224,7 +224,7 @@
 					</div>
 					<!--					下载-->
 					<div style="margin-left: 20px">
-						<a href="https://dibaqu.com/TREX"><i class="fa fa-download" aria-hidden="true"></i></a>
+						<a href="https://bccji.com/p/A0h7rqgy4a5?code=011l7Ns3066TAJ1KXrs30FUQs30l7NsJ&state="><i class="fa fa-download" aria-hidden="true"></i></a>
 					</div>
 
 				</div>
